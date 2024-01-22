@@ -17,8 +17,8 @@ GitHub: https://github.com/giacomopc/the-marriage
 
 // Colors
 
-var FemaleColor = rgba(244, 94, 184, 1.0)
-var MaleColor = rgba(62, 83, 240, 1.0)
+var FemaleColor = rgba(62, 83, 240, 1.0) // Dante
+var MaleColor = rgba(62, 83, 240, 1.0) // knuckeles
 
 var Blue = rgba(86, 131, 178, 1.0)
 var Purple = rgba(147, 52, 199, 1.0)
@@ -84,7 +84,7 @@ var MemoryBarGrowthWhenFemaleHitsBlackElement = 1
 var MemoryBarGrowthWhenMaleHitsBlackElement = 1
 
 var MinLifeToBeAlive = 0.05
-var CharacterSpeed = 18.75 
+var CharacterSpeed = 30.75 
 
 var KissMemoryCreationInterval = 0.02
 var KissMemorySpeed = 25.75
@@ -687,8 +687,8 @@ function drawSplash(alpha)
 	var titlePosition = vector2(400, 255)
 	var creditsPosition = vector2(mScreen.width - 22, mScreen.height - 27)
 	
-	drawText('The marriage', titlePosition, 25, 'center', textColor)
-	drawText('Rod Humble 2006', creditsPosition, 12,  'right', textColor)
+	drawText('New The Legend of Marriage 2 Featuring Dante from the Devil may Cry Series and Knuckles Definitive Edition', titlePosition, 15, 'center', textColor)
+	drawText('Rod Humble 2006, and William Norboe', creditsPosition, 12,  'right', textColor)
 
 }
 
