@@ -17,9 +17,9 @@ GitHub: https://github.com/giacomopc/the-marriage
 
 // Colors
 
-var FemaleColor = rgba(62, 83, 240, 1.0) // Dante
-var MaleColor = rgba(62, 83, 240, 1.0) // knuckeles
-
+var FemaleColor = rgba(245, 245, 245, 1.0) // Dante
+var MaleColor = rgba(245, 42, 42, 1.0) // knuckeles
+var audio = audio = new Audio('mm2wood.mp3');
 var Blue = rgba(86, 131, 178, 1.0)
 var Purple = rgba(147, 52, 199, 1.0)
 var Pink = rgba(203, 59, 200, 1.0)
@@ -84,7 +84,7 @@ var MemoryBarGrowthWhenFemaleHitsBlackElement = 1
 var MemoryBarGrowthWhenMaleHitsBlackElement = 1
 
 var MinLifeToBeAlive = 0.05
-var CharacterSpeed = 30.75 
+var CharacterSpeed = 90.75 
 
 var KissMemoryCreationInterval = 0.02
 var KissMemorySpeed = 25.75
@@ -543,6 +543,8 @@ function logic()
 		else if((isPointInsideRect(mMousePosition, TitleRect) && mMouseMoved) || mMouseClicked == true)
 		{			
 			newGame()
+			
+			audio.play();
 		}
 	}
 	
@@ -580,7 +582,11 @@ function logic()
 				if(isCoupleTogether && !mIsCoupleTogether) kiss()
 				mIsCoupleTogether = isCoupleTogether
 
-				if(mMouseClicked) gameOver()
+				if(mMouseClicked){
+					audio.pause();
+					audio.currentTime = 0;
+					gameOver()
+				}
 			}
 			
 			mMemoryBar.logic()
@@ -687,8 +693,8 @@ function drawSplash(alpha)
 	var titlePosition = vector2(400, 255)
 	var creditsPosition = vector2(mScreen.width - 22, mScreen.height - 27)
 	
-	drawText('New The Legend of Marriage 2 Featuring Dante from the Devil may Cry Series and Knuckles Definitive Edition', titlePosition, 15, 'center', textColor)
-	drawText('Rod Humble 2006, and William Norboe', creditsPosition, 12,  'right', textColor)
+	drawText('New The Legend of Marriage 2 Featuring Dante from the Devil may Cry Series and Knuckles', titlePosition, 12, 'center', textColor)
+	drawText('Rod Humble 2006, and William Norboe', creditsPosition, 10,  'right', textColor)
 
 }
 
