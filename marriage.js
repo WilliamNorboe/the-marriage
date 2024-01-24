@@ -17,8 +17,8 @@ GitHub: https://github.com/giacomopc/the-marriage
 
 // Colors
 
-var FemaleColor = rgba(245, 245, 245, 1.0) // Dante
-var MaleColor = rgba(245, 42, 42, 1.0) // knuckeles
+var FemaleColor =  rgba(245, 42, 42, 1.0)// Knuckles
+var MaleColor = rgba(245, 245, 245, 1.0) // Dante
 var audio = audio = new Audio('mm2wood.mp3');
 var Blue = rgba(86, 131, 178, 1.0)
 var Purple = rgba(147, 52, 199, 1.0)
@@ -26,20 +26,20 @@ var Pink = rgba(203, 59, 200, 1.0)
 var Green = rgba(2, 197, 41, 1.0)
 var Gray = rgba(39, 39, 39, 1.0)
 
-var SplashBackgroundColor = Blue
-var BackgroundColors = [Blue, Purple, Pink, Green, Gray, Gray]
+var SplashBackgroundColor = rgba(83, 212, 117, 1.0)
+var BackgroundColors = [rgba(83, 212, 117, 1.0), Purple, Pink, Green, Gray, Gray]
 var ClearColor = rgba(0, 0, 0, 0)
 
 // Elements
 
-var BlackElement = rgba(41, 56, 80, 0.65)
+var BlackElement = rgba(235, 23, 27, 0.65)
 
 var ElementColors = [
-	rgba(171, 207, 93, 0.65), 	// Green 1
-	rgba(189, 219, 107, 0.65),	// Green 2
-	rgba(225, 246, 149, 0.65),	// Green 3
-	rgba(206, 233, 129, 0.65),	// Green 4
-	rgba(249, 244, 240, 0.65),	// Gray
+	rgba(52, 195, 235, 0.65), 	// Green 1
+	rgba(52, 195, 235, 0.65),	// Green 2
+	rgba(52, 195, 235, 0.65),	// Green 3
+	rgba(52, 195, 235, 0.65),	// Green 4
+	rgba(52, 195, 235, 0.65),	// Gray
 	BlackElement				// Black
 ]
 
@@ -57,7 +57,7 @@ var KissSide = 4
 
 // Gameplay
 
-var FemaleKissGrowth = 12
+var FemaleKissGrowth = -1
 var FemaleHitsElementGrowth = 3
 var FemaleHitsBlackElementGrowth = -12
 var FemaleGrowthWhenElementDisappears = -7
@@ -163,6 +163,7 @@ function Character (gender)
 	var position = isFemale ? FemalePosition : MalePosition
 
 	this.gender = gender
+	// this.backgroundImage = "url(./test.jpg)"
 	this.color = isFemale ? FemaleColor : MaleColor
 	this.rect = rect(position.x, position.y, CharacterSide, CharacterSide)
 	this.life = 1
@@ -385,6 +386,10 @@ function Element()
 
 }
 
+audio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
 
 function Memory(type, position)
 {
@@ -583,9 +588,8 @@ function logic()
 				mIsCoupleTogether = isCoupleTogether
 
 				if(mMouseClicked){
-					audio.pause();
-					audio.currentTime = 0;
-					gameOver()
+					CharacterSpeed+= 50;
+					// gameOver()
 				}
 			}
 			
@@ -693,7 +697,7 @@ function drawSplash(alpha)
 	var titlePosition = vector2(400, 255)
 	var creditsPosition = vector2(mScreen.width - 22, mScreen.height - 27)
 	
-	drawText('New The Legend of Marriage 2 Featuring Dante from the Devil may Cry Series and Knuckles', titlePosition, 12, 'center', textColor)
+	drawText('New The Legend of Marriage 2 Featuring Dante from the Devil may Cry Series & Knuckles', titlePosition, 12, 'center', textColor)
 	drawText('Rod Humble 2006, and William Norboe', creditsPosition, 10,  'right', textColor)
 
 }
@@ -707,6 +711,8 @@ function newGame()
 
 function gameOver()
 {
+	audio.pause();
+	audio.currentTime = 0;
 	if(mEnding == true) return;
 
 	if(mCurrentLevel < 4 )
